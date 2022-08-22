@@ -4,6 +4,11 @@ if(localStorage.getItem('highScore') === null){
   localStorage.setItem('highScore', 0);
 }
 
+let secretNumber = Math.trunc(Math.random() * 20) + 1;
+let score = 20;
+let highScore = localStorage.getItem("highScore");
+document.querySelector('.highscore').textContent = highScore;
+
 function checking() {
   const guess = Number(document.querySelector('.guess').value);
   console.log(guess);
@@ -19,10 +24,10 @@ function checking() {
     document.querySelector('body').style.backgroundColor = '#60b347';
     document.querySelector('.number').style.width = '30rem';
 
-    if (score > highScore) {
+     if (score > highScore) {
       highScore = score;
+      highScore.textContent = highScore;
       localStorage.setItem('highScore', highScore);
-      document.querySelector('.highscore').textContent = highScore;
     }
 
     //guess is wrong
@@ -39,10 +44,6 @@ function checking() {
     }
   }
 }
-
-let secretNumber = Math.trunc(Math.random() * 20) + 1;
-let score = 20;
-let highScore = localStorage.getItem("highScore");
 
 document.querySelector('.check').addEventListener('click', checking);
 
