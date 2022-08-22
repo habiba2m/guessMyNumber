@@ -4,11 +4,7 @@ if(localStorage.getItem('highScore') === null){
   localStorage.setItem('highScore', 0);
 }
 
-let secretNumber = Math.trunc(Math.random() * 20) + 1;
-let score = 20;
-let highScore = localStorage.getItem("highScore");
-
-document.querySelector('.check').addEventListener('click', function () {
+function checking() {
   const guess = Number(document.querySelector('.guess').value);
   console.log(guess);
 
@@ -25,7 +21,7 @@ document.querySelector('.check').addEventListener('click', function () {
 
     if (score > highScore) {
       highScore = score;
-      localStorage.setItem("highScore", highScore);
+      localStorage.setItem('highScore', highScore);
       document.querySelector('.highscore').textContent = highScore;
     }
 
@@ -42,7 +38,13 @@ document.querySelector('.check').addEventListener('click', function () {
       document.querySelector('.score').textContent = 0;
     }
   }
-});
+}
+
+let secretNumber = Math.trunc(Math.random() * 20) + 1;
+let score = 20;
+let highScore = localStorage.getItem("highScore");
+
+document.querySelector('.check').addEventListener('click', checking);
 
 document.querySelector('.again').addEventListener('click', function () {
   secretNumber = Math.trunc(Math.random() * 20) + 1;
@@ -53,4 +55,12 @@ document.querySelector('.again').addEventListener('click', function () {
   document.querySelector('.guess').value = '';
   document.querySelector('body').style.backgroundColor = 'black';
   document.querySelector('.number').style.width = '15rem';
+});
+
+
+document.addEventListener('keydown', function (event) {
+  console.log(KeyboardEvent);
+  if (event.key === 'Enter') {
+    checking();
+  }
 });
