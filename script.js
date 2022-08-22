@@ -1,12 +1,12 @@
 'use strict';
 
-if(localStorage.getItem('highScore') === null){
+if (localStorage.getItem('highScore') === null) {
   localStorage.setItem('highScore', 0);
 }
 
 let secretNumber = Math.trunc(Math.random() * 20) + 1;
 let score = 20;
-let highScore = localStorage.getItem("highScore");
+let highScore = localStorage.getItem('highScore');
 document.querySelector('.highscore').textContent = highScore;
 
 function checking() {
@@ -24,7 +24,7 @@ function checking() {
     document.querySelector('body').style.backgroundColor = '#60b347';
     document.querySelector('.number').style.width = '30rem';
 
-     if (score > highScore) {
+    if (score > highScore) {
       highScore = score;
       highScore.textContent = highScore;
       localStorage.setItem('highScore', highScore);
@@ -57,7 +57,6 @@ document.querySelector('.again').addEventListener('click', function () {
   document.querySelector('body').style.backgroundColor = 'black';
   document.querySelector('.number').style.width = '15rem';
 });
-
 
 document.addEventListener('keydown', function (event) {
   console.log(KeyboardEvent);
