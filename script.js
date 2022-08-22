@@ -25,8 +25,8 @@ document.querySelector('.check').addEventListener('click', function () {
 
     if (score > highScore) {
       highScore = score;
-      document.querySelector('.highscore').textContent = highScore;
       localStorage.setItem("highScore", highScore);
+      document.querySelector('.highscore').textContent = highScore;
     }
 
     //guess is wrong
